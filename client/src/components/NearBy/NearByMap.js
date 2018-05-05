@@ -1,0 +1,75 @@
+import React from "react";
+import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
+
+import Loader from "../Loader/Loader";
+import data from "../../data/dataWithCords.json";
+
+class NearbyMap extends React.Component {
+  state = {
+    currentCenter: this.props.center
+  };
+
+  filterMarkers = (radius = 500) => {
+    return data.filter(movie => {
+      const { maps } = this.props.google;
+      let center = new maps.LatLng(this.state.currentCenter);
+      let moviePoint = new maps.LatLng(movie.location);
+
+      let distance = maps.geometry.spherical.computeDistanceBetween(
+        center,
+        moviePoint
+      );
+
+      if (distance < radius) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  };
+  renderMarkers = () => {
+    return this.filterMarkers().map(movie => {
+      return (
+        <Marker
+          icon={{
+            url:
+              "http://bestcareerbd.com/themes/ftage/wp-content/themes/ftage/assets/img/dot-active.png"
+          }}
+          key={movie.id}
+          position={movie.location}
+        />
+      );
+    });
+  };
+
+  onMapClick = (mapProps, map, clickEvent) => {
+    const lat = clickEvent.latLng.lat();
+    const lng = clickEvent.latLng.lng();
+
+    this.setState(
+      {
+        currentCenter: { lat, lng }
+      },
+      () => {
+        this.renderMarkers();
+        map.panTo(this.state.currentCenter);
+      }
+    );
+  };
+
+  render() {
+    const { currentCenter } = this.state;
+    return (
+      <Map google={this.props.google} zoom={15} onClick={this.onMapClick}>
+        {this.renderMarkers()}
+        <Marker position={currentCenter} />
+      </Map>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyAxlHPHrZBPgk8Vho3gc6RylhUDY1Zp1jU",
+  libraries: ["geometry", "places"],
+  LoadingContainer: Loader
+})(NearbyMap);
