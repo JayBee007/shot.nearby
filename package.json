@@ -4,7 +4,8 @@
   "description": "Server for shot.nearby client",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "getCoords": "babel-node server/getCoords --presets es2015,stage-2"
   },
   "keywords": [
     "Google",
@@ -16,5 +17,13 @@
     "Router"
   ],
   "author": "Javed",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "axios": "^0.18.0",
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "uuid": "^3.2.1"
+  }
 }
