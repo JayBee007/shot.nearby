@@ -1,0 +1,20 @@
+.marker-details {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 30rem;
+  width: 22rem;
+  z-index: 1;
+  background: green;
+  backface-visibility: hidden;
+  transition: transform 0.2s;
+
+  &--isVisible {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  &--isNotVisible {
+    transform: translateY(60rem) translateX(-50%);
+  }
+}

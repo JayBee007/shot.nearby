@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "google-maps-react": "^2.0.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.9.0",
@@ -24,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
+    "compile:sass": "node-sass -w src/sass/main.scss src/index.css",
     "precommit": "lint-staged"
   },
   "lint-staged": {

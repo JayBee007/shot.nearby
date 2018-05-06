@@ -1,7 +1,26 @@
 import React from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+
+import { hideMarkerDetails } from "../../redux/actions/actions";
 
 const MarkerDetails = props => {
-  return <div>Marker Details</div>;
+  const { isMarkerDetailsVisible } = props;
+
+  const markerClass = isMarkerDetailsVisible
+    ? "marker-details marker-details--isVisible"
+    : "marker-details marker-details--isNotVisible";
+
+  return (
+    <div className={markerClass}>
+      <span onClick={props.hideMarkerDetails}>&times;</span>
+      Marker Details
+    </div>
+  );
 };
 
-export default MarkerDetails;
+MarkerDetails.propTypes = {
+  isMarkerDetailsVisible: PropTypes.bool.isRequired
+};
+
+export default connect(null, { hideMarkerDetails })(MarkerDetails);

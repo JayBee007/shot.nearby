@@ -1,19 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
+// Components
 import Loader from "../Loader/Loader";
+// Data
 import data from "../../data/dataWithCords.json";
 import styles from "./mapStyles";
-
+// Assets
 import camera from "../../assets/img/camera_marker.png";
 import userMarker from "../../assets/img/user_marker.png";
+// Actions
+import {
+  showMarkerDetails,
+  getMovieDetails
+} from "../../redux/actions/actions";
 class NearbyMap extends React.Component {
   state = {
     currentCenter: this.props.center
   };
 
   handleMarkerClick = movie => {
-    console.log("handle Click", movie);
+    this.props.showMarkerDetails();
+    this.props.getMovieDetails(movie.title);
   };
 
   filterMarkers = (radius = 500) => {
@@ -81,8 +90,12 @@ class NearbyMap extends React.Component {
   }
 }
 
+const connectNearByMap = connect(null, { showMarkerDetails, getMovieDetails })(
+  NearbyMap
+);
+
 export default GoogleApiWrapper({
   apiKey: "AIzaSyAxlHPHrZBPgk8Vho3gc6RylhUDY1Zp1jU",
   libraries: ["geometry", "places"],
   LoadingContainer: Loader
-})(NearbyMap);
+})(connectNearByMap);

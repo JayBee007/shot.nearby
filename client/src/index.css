@@ -1,10 +1,78 @@
-html,
-body {
-  height: 100%;
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900");
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100%;
 }
 
 #root {
   height: 100%;
+}
+
+body {
+  font-family: "Lato", "sans-serif";
+  font-weight: 400;
+  line-height: 1.7;
+  color: #3e1046;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateY(300px) translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+@keyframes moveOutBottom {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.map {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.marker-details {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 30rem;
+  width: 22rem;
+  z-index: 1;
+  background: green;
+  backface-visibility: hidden;
+  transition: transform 0.2s;
+}
+.marker-details--isVisible {
+  transform: translateY(0) translateX(-50%);
+}
+.marker-details--isNotVisible {
+  transform: translateY(60rem) translateX(-50%);
 }
