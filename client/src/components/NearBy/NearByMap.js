@@ -3,7 +3,10 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
 import Loader from "../Loader/Loader";
 import data from "../../data/dataWithCords.json";
+import styles from "./mapStyles";
 
+import camera from "../../assets/img/camera_marker.png";
+import userMarker from "../../assets/img/user_marker.png";
 class NearbyMap extends React.Component {
   state = {
     currentCenter: this.props.center
@@ -32,8 +35,7 @@ class NearbyMap extends React.Component {
       return (
         <Marker
           icon={{
-            url:
-              "http://bestcareerbd.com/themes/ftage/wp-content/themes/ftage/assets/img/dot-active.png"
+            url: camera
           }}
           key={movie.id}
           position={movie.location}
@@ -60,9 +62,14 @@ class NearbyMap extends React.Component {
   render() {
     const { currentCenter } = this.state;
     return (
-      <Map google={this.props.google} zoom={15} onClick={this.onMapClick}>
+      <Map
+        styles={styles}
+        google={this.props.google}
+        zoom={15}
+        onClick={this.onMapClick}
+      >
         {this.renderMarkers()}
-        <Marker position={currentCenter} />
+        <Marker position={currentCenter} icon={{ url: userMarker }} />
       </Map>
     );
   }
