@@ -1,7 +1,29 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import MarkerDetails from "../MarkerDetails/MarkerDetails";
+import NearByMap from "./NearByMap";
 
 const NearBy = props => {
-  return <div>NearBy</div>;
+  const location = {
+    lat: 37.775316,
+    lng: -122.4174374
+  };
+
+  const { marker } = props;
+  const { isMarkerDetailsVisible } = marker;
+
+  return (
+    <div className="map">
+      <MarkerDetails isMarkerDetailsVisible={isMarkerDetailsVisible} />
+      <NearByMap center={location} />
+    </div>
+  );
 };
 
-export default NearBy;
+function mapStateToProps(state) {
+  return {
+    marker: state.marker
+  };
+}
+export default connect(mapStateToProps, null)(NearBy);

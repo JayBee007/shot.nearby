@@ -1,5 +1,153 @@
-body {
+@import url("https://fonts.googleapis.com/css?family=Lato:400,900");
+*,
+*::after,
+*::before {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Lato", "sans-serif";
+  font-weight: 400;
+  line-height: 1.7;
+  color: #3e1046;
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateY(300px) translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+
+@keyframes moveOutBottom {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.map {
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.marker-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50rem;
+  width: 30rem;
+  z-index: 1;
+  background: #fff;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+}
+.marker-details--isVisible {
+  transform: translateY(-50%) translateX(-50%);
+}
+.marker-details--isNotVisible {
+  transform: translateY(600rem) translateX(-50%);
+}
+.marker-details__close {
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  font-size: 2.2rem;
+  display: inline-block;
+  height: 2.2rem;
+  width: 2.2rem;
+  border-radius: 50%;
+  color: #d50000;
+  border: 1px solid #e2a750;
+  line-height: 2rem;
+  text-align: center;
+}
+.marker-details__img {
+  height: 60%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  overflow: hidden;
+  background: #3e1046;
+}
+.marker-details__img > img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+}
+.marker-details__info {
+  padding: 1rem;
+}
+.marker-details__meta {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-weight: 900;
+}
+.marker-details__title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  height: 1em;
+  overflow: hidden;
+  line-height: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.marker-details__plot--outer {
+  height: 4.2em;
+  font-size: 1.4rem;
+  line-height: 1.4em;
+  overflow: hidden;
+  margin-bottom: 1.2rem;
+}
+.marker-details__route {
+  cursor: pointer;
+  font-size: 2rem;
+  height: 2.5rem;
+  line-height: 2.5rem;
+  color: #d50000;
+  display: inline-block;
+  transition: all 0.3s;
+}
+.marker-details__route:hover {
+  color: #3e1046;
+}
+.marker-details__route--icon {
+  height: 100%;
+  line-height: 2.5rem;
+  display: inline-block;
+  font-size: 2.5rem;
+  margin-right: 1rem;
 }

@@ -1,0 +1,105 @@
+.marker-details {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 50rem;
+  width: 30rem;
+  z-index: 1;
+  background: $color-white;
+  backface-visibility: hidden;
+  transition: transform 0.5s ease-in-out;
+  overflow: hidden;
+
+  &--isVisible {
+    transform: translateY(-50%) translateX(-50%);
+  }
+
+  &--isNotVisible {
+    transform: translateY(600rem) translateX(-50%);
+  }
+
+  &__close {
+    cursor: pointer;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    font-size: 2.2rem;
+    display: inline-block;
+    height: 2.2rem;
+    width: 2.2rem;
+    border-radius: 50%;
+    color: $color-red;
+    border: 1px solid $color-gold;
+    line-height: 2rem;
+    text-align: center;
+  }
+
+  &__img {
+    height: 60%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    overflow: hidden;
+    background: $color-purple;
+
+    & > img {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      margin: 0 auto;
+    }
+  }
+
+  &__info {
+    padding: 1rem;
+  }
+
+  &__meta {
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+  }
+
+  &__title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+    height: 1em;
+    overflow: hidden;
+    line-height: 1em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &__plot--outer {
+    height: 4.2em;
+    font-size: 1.4rem;
+    line-height: 1.4em;
+    overflow: hidden;
+    margin-bottom: 1.2rem;
+  }
+
+  &__route {
+    cursor: pointer;
+    font-size: 2rem;
+    // background: green;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    color: $color-red;
+    display: inline-block;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $color-purple;
+    }
+
+    &--icon {
+      height: 100%;
+      line-height: 2.5rem;
+      display: inline-block;
+      font-size: 2.5rem;
+      margin-right: 1rem;
+    }
+  }
+}
