@@ -12,6 +12,10 @@ class NearbyMap extends React.Component {
     currentCenter: this.props.center
   };
 
+  handleMarkerClick = movie => {
+    console.log("handle Click", movie);
+  };
+
   filterMarkers = (radius = 500) => {
     return data.filter(movie => {
       const { maps } = this.props.google;
@@ -39,6 +43,7 @@ class NearbyMap extends React.Component {
           }}
           key={movie.id}
           position={movie.location}
+          onClick={() => this.handleMarkerClick(movie)}
         />
       );
     });
@@ -67,6 +72,7 @@ class NearbyMap extends React.Component {
         google={this.props.google}
         zoom={15}
         onClick={this.onMapClick}
+        disableDefaultUI={true}
       >
         {this.renderMarkers()}
         <Marker position={currentCenter} icon={{ url: userMarker }} />
