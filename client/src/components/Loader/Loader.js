@@ -1,7 +1,15 @@
 import React from "react";
 
 const Loader = () => {
-  return <p>Loading Google Maps</p>;
+  return (
+    <div className="loader">
+      <div className="loader__bounce">
+        <span />
+        <span />
+        <span />
+      </div>
+    </div>
+  );
 };
 
 export default Loader;
