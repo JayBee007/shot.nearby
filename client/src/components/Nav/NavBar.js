@@ -1,15 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
 
+import { setRadius } from "../../redux/actions/actions";
+
 class NavBar extends React.Component {
   state = {
     value: 1000
   };
 
   setValue = value => {
-    this.setState({
-      value
-    });
+    this.setState(
+      () => ({
+        value
+      }),
+      () => {
+        this.props.setRadius(this.state.value);
+      }
+    );
   };
 
   handleChange = e => {
@@ -19,7 +26,7 @@ class NavBar extends React.Component {
         value
       }),
       () => {
-        console.log(this.state.value);
+        this.props.setRadius(this.state.value);
       }
     );
   };
@@ -58,4 +65,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, null)(NavBar);
+export default connect(mapStateToProps, { setRadius })(NavBar);

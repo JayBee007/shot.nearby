@@ -20,12 +20,17 @@ class NearbyMap extends React.Component {
     currentCenter: this.props.center
   };
 
+  componentDidUpdate(prevProps, prevState) {
+    console.log(prevProps, prevState);
+  }
+
   handleMarkerClick = movie => {
     this.props.showMarkerDetails();
     this.props.getMovieDetails(movie.title);
   };
 
-  filterMarkers = (radius = 500) => {
+  filterMarkers = () => {
+    const radius = this.props.radius;
     return data.filter(movie => {
       const { maps } = this.props.google;
       let center = new maps.LatLng(this.state.currentCenter);
@@ -90,9 +95,16 @@ class NearbyMap extends React.Component {
   }
 }
 
-const connectNearByMap = connect(null, { showMarkerDetails, getMovieDetails })(
-  NearbyMap
-);
+function mapStatetoProps(state) {
+  return {
+    radius: state.nav.radius
+  };
+}
+
+const connectNearByMap = connect(mapStatetoProps, {
+  showMarkerDetails,
+  getMovieDetails
+})(NearbyMap);
 
 export default GoogleApiWrapper({
   apiKey: "AIzaSyAxlHPHrZBPgk8Vho3gc6RylhUDY1Zp1jU",
