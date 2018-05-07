@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.0.12/css/all.css");
 @import url("https://fonts.googleapis.com/css?family=Lato:400,900");
 *,
 *::after,
@@ -188,4 +189,28 @@ body {
   display: inline-block;
   font-size: 2.5rem;
   margin-right: 1rem;
+}
+
+.rating {
+  position: relative;
+}
+.rating::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-weight: 900;
+  color: #ccc;
+}
+.rating-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  width: 0;
+  white-space: nowrap;
+}
+.rating-inner::before {
+  font-family: "Font Awesome 5 Free";
+  content: "\f005 \f005 \f005 \f005 \f005";
+  font-weight: 900;
+  color: #e2a750;
 }

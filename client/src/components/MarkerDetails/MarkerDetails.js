@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
+import Rating from "../Rating/Rating";
+
 import { hideMarkerDetails } from "../../redux/actions/actions";
 
 class MarkerDetails extends React.Component {
@@ -15,7 +17,7 @@ class MarkerDetails extends React.Component {
 
   render() {
     const { isMarkerDetailsVisible, movie, hideMarkerDetails } = this.props;
-    const { Poster, Title, Released, Runtime, Plot } = movie;
+    const { Poster, Title, Released, Runtime, Plot, imdbRating } = movie;
     const markerClass = isMarkerDetailsVisible
       ? "marker-details marker-details--isVisible"
       : "marker-details marker-details--isNotVisible";
@@ -33,6 +35,7 @@ class MarkerDetails extends React.Component {
         <div className="marker-details__info">
           <div className="marker-details__meta">
             <p className="marker-details__year">{Released}</p>
+            <Rating rating={imdbRating} />
             <p className="marker-details__runtime">{Runtime}</p>
           </div>
           <p className="marker-details__title">{Title}</p>
