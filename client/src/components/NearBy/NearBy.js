@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import MarkerDetails from "../MarkerDetails/MarkerDetails";
 import NearByMap from "./NearByMap";
+import Nav from "../Nav/Nav";
+import NavBar from "../Nav/NavBar";
 
 const NearBy = props => {
   const location = {
@@ -15,6 +17,8 @@ const NearBy = props => {
 
   return (
     <div className="map">
+      <Nav />
+      <NavBar />
       <MarkerDetails isMarkerDetailsVisible={isMarkerDetailsVisible} />
       <NearByMap center={location} />
     </div>
