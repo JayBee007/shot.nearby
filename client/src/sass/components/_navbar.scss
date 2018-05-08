@@ -12,16 +12,4 @@
   &--isVisible {
     transform: translateX(0);
   }
-
-  &__range {
-    padding-right: 1rem;
-    padding-left: 1rem;
-    &-range {
-      cursor: pointer;
-      font-size: 1.4rem;
-      font-weight: 900;
-      display: flex;
-      justify-content: space-between;
-    }
-  }
 }

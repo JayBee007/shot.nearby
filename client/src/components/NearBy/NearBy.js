@@ -5,6 +5,7 @@ import MarkerDetails from "../MarkerDetails/MarkerDetails";
 import NearByMap from "./NearByMap";
 import Nav from "../Nav/Nav";
 import NavBar from "../Nav/NavBar";
+import Range from "../Range/Range";
 
 const NearBy = props => {
   const location = {
@@ -19,6 +20,7 @@ const NearBy = props => {
     <div className="map">
       <Nav />
       <NavBar />
+      <Range />
       <MarkerDetails isMarkerDetailsVisible={isMarkerDetailsVisible} />
       <NearByMap center={location} />
     </div>
