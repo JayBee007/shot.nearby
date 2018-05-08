@@ -22,6 +22,13 @@ class NearbyMap extends React.Component {
     currentCenter: this.props.map.location
   };
 
+  componentDidMount() {
+    const { google } = this.props;
+
+    window.directionsService = new google.maps.DirectionsService();
+    window.directionsDisplay = new google.maps.DirectionsRenderer();
+  }
+
   handleMarkerClick = movie => {
     const { title, location } = movie;
     this.props.showMarkerDetails(location);
@@ -81,6 +88,7 @@ class NearbyMap extends React.Component {
   render() {
     const { currentCenter } = this.state;
     const { isMarkerDetailsVisible } = this.props.marker;
+
     return (
       <Map
         styles={styles}

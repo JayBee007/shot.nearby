@@ -1,7 +1,11 @@
 import { showMarkerDetails, hideMarkerDetails } from "./markerActions";
 import { getMovieDetails } from "./movieDetailActions";
 import { showNav, hideNav, setRadius } from "./navActions";
-import { setCurrentLocation } from "./mapActions";
+import {
+  setCurrentLocation,
+  setDirectionRenderer,
+  setDirectionService
+} from "./mapActions";
 
 export {
   showMarkerDetails,
@@ -10,5 +14,7 @@ export {
   showNav,
   hideNav,
   setRadius,
-  setCurrentLocation
+  setCurrentLocation,
+  setDirectionRenderer,
+  setDirectionService
 };
