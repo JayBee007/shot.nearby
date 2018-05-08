@@ -15,6 +15,33 @@ class MarkerDetails extends React.Component {
     }
   }
 
+  handleClick = () => {
+    const {
+      map,
+      google,
+      movieLocation,
+      centerLocation,
+      hideMarkerDetails
+    } = this.props;
+    let directionsService = new google.maps.DirectionsService();
+    let directionsDisplay = new google.maps.DirectionsRenderer();
+    // console.log(directionsDisplay);
+    directionsDisplay.setDirections({ routes: [] });
+    directionsDisplay.setMap(map);
+    let request = {
+      origin: centerLocation,
+      destination: movieLocation,
+      travelMode: "WALKING"
+    };
+    directionsService.route(request, function(result, status) {
+      if (status === "OK") {
+        hideMarkerDetails();
+        directionsDisplay.setDirections(result);
+        // console.log(result);
+      }
+    });
+  };
+
   render() {
     const { isMarkerDetailsVisible, movie, hideMarkerDetails } = this.props;
     const { Poster, Title, Released, Runtime, Plot, imdbRating } = movie;
@@ -52,7 +79,7 @@ class MarkerDetails extends React.Component {
             </p>
           </div>
 
-          <p className="marker-details__route">
+          <p className="marker-details__route" onClick={this.handleClick}>
             <span className="marker-details__route--icon">&#8620;</span>Create a
             route
           </p>
@@ -68,7 +95,9 @@ MarkerDetails.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    movie: state.movie.data
+    movie: state.movie.data,
+    movieLocation: state.marker.location,
+    centerLocation: state.map.location
   };
 }
 

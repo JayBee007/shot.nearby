@@ -4,6 +4,7 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 
 // Components
 import Loader from "../Loader/Loader";
+import MarkerDetails from "../MarkerDetails/MarkerDetails";
 // Data
 import data from "../../data/dataWithCords.json";
 import styles from "./mapStyles";
@@ -13,20 +14,18 @@ import userMarker from "../../assets/img/user_marker.png";
 // Actions
 import {
   showMarkerDetails,
-  getMovieDetails
+  getMovieDetails,
+  setCurrentLocation
 } from "../../redux/actions/actions";
 class NearbyMap extends React.Component {
   state = {
-    currentCenter: this.props.center
+    currentCenter: this.props.map.location
   };
 
-  componentDidUpdate(prevProps, prevState) {
-    console.log(prevProps, prevState);
-  }
-
   handleMarkerClick = movie => {
-    this.props.showMarkerDetails();
-    this.props.getMovieDetails(movie.title);
+    const { title, location } = movie;
+    this.props.showMarkerDetails(location);
+    this.props.getMovieDetails(title);
   };
 
   filterMarkers = () => {
@@ -74,12 +73,14 @@ class NearbyMap extends React.Component {
       () => {
         this.renderMarkers();
         map.panTo(this.state.currentCenter);
+        this.props.setCurrentLocation({ lat, lng });
       }
     );
   };
 
   render() {
     const { currentCenter } = this.state;
+    const { isMarkerDetailsVisible } = this.props.marker;
     return (
       <Map
         styles={styles}
@@ -90,6 +91,7 @@ class NearbyMap extends React.Component {
       >
         {this.renderMarkers()}
         <Marker position={currentCenter} icon={{ url: userMarker }} />
+        <MarkerDetails isMarkerDetailsVisible={isMarkerDetailsVisible} />
       </Map>
     );
   }
@@ -97,13 +99,16 @@ class NearbyMap extends React.Component {
 
 function mapStatetoProps(state) {
   return {
-    radius: state.nav.radius
+    radius: state.nav.radius,
+    marker: state.marker,
+    map: state.map
   };
 }
 
 const connectNearByMap = connect(mapStatetoProps, {
   showMarkerDetails,
-  getMovieDetails
+  getMovieDetails,
+  setCurrentLocation
 })(NearbyMap);
 
 export default GoogleApiWrapper({

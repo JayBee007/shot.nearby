@@ -3,9 +3,9 @@ import {
   HIDE_MARKER_DETAILS
 } from "../constants/constants";
 
-export const showMarkerDetails = movieTitle => ({
+export const showMarkerDetails = location => ({
   type: SHOW_MARKER_DETAILS,
-  movieTitle
+  location
 });
 
 export const hideMarkerDetails = () => ({
