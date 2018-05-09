@@ -5,6 +5,7 @@ import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 // Components
 import Loader from "../Loader/Loader";
 import MarkerDetails from "../MarkerDetails/MarkerDetails";
+import Gallery from "../Gallery/Gallery";
 // Data
 import data from "../../data/dataWithCords.json";
 import styles from "./mapStyles";
@@ -100,6 +101,7 @@ class NearbyMap extends React.Component {
         {this.renderMarkers()}
         <Marker position={currentCenter} icon={{ url: userMarker }} />
         <MarkerDetails isMarkerDetailsVisible={isMarkerDetailsVisible} />
+        <Gallery />
       </Map>
     );
   }

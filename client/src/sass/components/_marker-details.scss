@@ -80,12 +80,14 @@
     margin-bottom: 1.2rem;
   }
 
-  &__route {
+  &__ctas {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.7rem;
+  }
+
+  &__cta {
     cursor: pointer;
-    font-size: 2rem;
-    // background: green;
-    height: 2.5rem;
-    line-height: 2.5rem;
     color: $color-red;
     display: inline-block;
     transition: all 0.3s;
@@ -95,11 +97,7 @@
     }
 
     &--icon {
-      height: 100%;
-      line-height: 2.5rem;
-      display: inline-block;
-      font-size: 2.5rem;
-      margin-right: 1rem;
+      margin-right: 0.5rem;
     }
   }
 }

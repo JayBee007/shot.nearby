@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 
 import Rating from "../Rating/Rating";
 
-import { hideMarkerDetails } from "../../redux/actions/actions";
+import {
+  hideMarkerDetails,
+  showImages,
+  getNearByImages
+} from "../../redux/actions/actions";
 
 class MarkerDetails extends React.Component {
   componentDidUpdate(prevProps) {
@@ -15,7 +19,12 @@ class MarkerDetails extends React.Component {
     }
   }
 
-  handleClick = () => {
+  fetchImages = () => {
+    this.props.showImages();
+    // this.props.getNearByImages(movieLocation);
+  };
+
+  createRoute = () => {
     const {
       map,
       movieLocation,
@@ -77,10 +86,16 @@ class MarkerDetails extends React.Component {
             </p>
           </div>
 
-          <p className="marker-details__route" onClick={this.handleClick}>
-            <span className="marker-details__route--icon">&#8620;</span>Create a
-            route
-          </p>
+          <div className="marker-details__ctas">
+            <p className="marker-details__cta" onClick={this.createRoute}>
+              <span className="fas fa-location-arrow marker-details__cta--icon" />Create
+              route
+            </p>
+            <p className="marker-details__cta" onClick={this.fetchImages}>
+              <span className="fas fa-images marker-details__cta--icon" />Check
+              location
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -101,4 +116,8 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps, { hideMarkerDetails })(MarkerDetails);
+export default connect(mapStateToProps, {
+  hideMarkerDetails,
+  showImages,
+  getNearByImages
+})(MarkerDetails);
