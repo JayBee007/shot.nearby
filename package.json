@@ -4,7 +4,7 @@
   "description": "Server for shot.nearby client",
   "main": "server.js",
   "scripts": {
-    "start": "babel-node server/server",
+    "start": "babel-node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "getCoords": "babel-node server/getCoords --presets es2015,env",
     "heroku-postbuild":
