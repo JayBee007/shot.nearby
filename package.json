@@ -18,7 +18,9 @@
   ],
   "author": "Javed",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "react-images": "^0.5.17"
+  },
   "devDependencies": {
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
