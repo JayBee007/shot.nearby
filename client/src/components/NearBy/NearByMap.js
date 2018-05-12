@@ -19,10 +19,6 @@ import {
   setCurrentLocation
 } from "../../redux/actions/actions";
 class NearbyMap extends React.Component {
-  state = {
-    currentCenter: this.props.map.location
-  };
-
   componentDidMount() {
     const { google } = this.props;
 
@@ -38,9 +34,10 @@ class NearbyMap extends React.Component {
 
   filterMarkers = () => {
     const radius = this.props.radius;
+    const { location } = this.props.map;
     return data.filter(movie => {
       const { maps } = this.props.google;
-      let center = new maps.LatLng(this.state.currentCenter);
+      let center = new maps.LatLng(location);
       let moviePoint = new maps.LatLng(movie.location);
 
       let distance = maps.geometry.spherical.computeDistanceBetween(
@@ -74,21 +71,14 @@ class NearbyMap extends React.Component {
     const lat = clickEvent.latLng.lat();
     const lng = clickEvent.latLng.lng();
 
-    this.setState(
-      {
-        currentCenter: { lat, lng }
-      },
-      () => {
-        this.renderMarkers();
-        map.panTo(this.state.currentCenter);
-        this.props.setCurrentLocation({ lat, lng });
-      }
-    );
+    this.props.setCurrentLocation({ lat, lng });
+    this.renderMarkers();
+    map.panTo({ lat, lng });
   };
 
   render() {
-    const { currentCenter } = this.state;
     const { isMarkerDetailsVisible } = this.props.marker;
+    const { location } = this.props.map;
 
     return (
       <Map
@@ -99,7 +89,7 @@ class NearbyMap extends React.Component {
         disableDefaultUI={true}
       >
         {this.renderMarkers()}
-        <Marker position={currentCenter} icon={{ url: userMarker }} />
+        <Marker position={location} icon={{ url: userMarker }} />
         <MarkerDetails isMarkerDetailsVisible={isMarkerDetailsVisible} />
         <Gallery />
       </Map>
