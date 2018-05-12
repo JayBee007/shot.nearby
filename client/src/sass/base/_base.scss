@@ -22,6 +22,23 @@ body {
   height: 100%;
 }
 
+.btn {
+  @include btn-reset;
+  transition: all 0.2s;
+
+  &:hover {
+    transform: translateY(-0.1rem);
+  }
+
+  &-primary {
+    padding: 0.5rem 1rem;
+    border: 2px solid $color-gold;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
 input[type="range"] {
   width: 100%;
   height: 22px; /* thumbHeight + (2 x thumbBorderWidth)*/

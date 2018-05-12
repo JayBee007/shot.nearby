@@ -7,7 +7,7 @@ import {
 import { getMovieDetails } from "./movieDetailActions";
 import { showNav, hideNav, setRadius } from "./navActions";
 import { setCurrentLocation } from "./mapActions";
-
+import { setDirections, resetDirections } from "./directionActions";
 import { getNearByImages } from "./galleryActions";
 
 export {
@@ -20,5 +20,7 @@ export {
   setCurrentLocation,
   showImages,
   hideImages,
-  getNearByImages
+  getNearByImages,
+  setDirections,
+  resetDirections
 };

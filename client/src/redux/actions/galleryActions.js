@@ -39,12 +39,9 @@ export function getNearByImages(location) {
     dispatch(getImagesRequest());
 
     return fetchPlaces(location)
-      .then(
-        res => console.log(res),
-        err => {
-          dispatch(getImagesError(err));
-        }
-      )
+      .then(err => {
+        dispatch(getImagesError(err));
+      })
       .then(data => {
         dispatch(getImagesSuccess(data));
       });
