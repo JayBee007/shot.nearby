@@ -8,8 +8,21 @@
   transform: translateX(32rem);
   transition: transform 0.3s ease-in;
   padding-top: 7.5rem;
+  padding-top: 7.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 2.2rem;
 
   &--isVisible {
     transform: translateX(0);
+  }
+
+  &-direction-wrap {
+    border: 1px solid lightgray;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 1.5rem;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+    margin-bottom: 1rem;
   }
 }

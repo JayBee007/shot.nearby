@@ -7,7 +7,8 @@ import Rating from "../Rating/Rating";
 import {
   hideMarkerDetails,
   showImages,
-  getNearByImages
+  getNearByImages,
+  setDirections
 } from "../../redux/actions/actions";
 
 class MarkerDetails extends React.Component {
@@ -21,7 +22,6 @@ class MarkerDetails extends React.Component {
 
   fetchImages = () => {
     this.props.showImages();
-    // this.props.getNearByImages(movieLocation);
   };
 
   createRoute = () => {
@@ -29,7 +29,8 @@ class MarkerDetails extends React.Component {
       map,
       movieLocation,
       centerLocation,
-      hideMarkerDetails
+      hideMarkerDetails,
+      setDirections
     } = this.props;
 
     window.directionsDisplay.set("directions", null);
@@ -44,6 +45,7 @@ class MarkerDetails extends React.Component {
     window.directionsService.route(request, function(result, status) {
       if (status === "OK") {
         hideMarkerDetails();
+        setDirections(result.routes);
         window.directionsDisplay.setDirections(result);
       }
     });
@@ -58,6 +60,7 @@ class MarkerDetails extends React.Component {
 
     return (
       <div className={markerClass}>
+        <div ref={el => (this.showDirections = el)} />
         <span className="marker-details__close" onClick={hideMarkerDetails}>
           &times;
         </span>
@@ -119,5 +122,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   hideMarkerDetails,
   showImages,
-  getNearByImages
+  getNearByImages,
+  setDirections
 })(MarkerDetails);
