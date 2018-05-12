@@ -1,0 +1,72 @@
+.landing {
+  height: 100%;
+  background: linear-gradient(
+      rgba($color-black, 0.75),
+      rgba($color-black, 0.75)
+    ),
+    url("./assets/img/landing_bg.jpg") no-repeat;
+  background-size: cover;
+  overflow: hidden;
+
+  &-nav {
+    height: 65px;
+    max-width: 102.4rem;
+    margin: 0 auto;
+  }
+
+  &-logo {
+    height: 100%;
+
+    &__img {
+      display: block;
+      height: 100%;
+    }
+  }
+
+  &-jumbo {
+    display: flex;
+    max-width: 102.4rem;
+    margin: 0 auto;
+    padding-top: 2rem;
+    justify-content: space-between;
+    &_mob {
+      width: 32rem;
+      height: 52rem;
+      &-img {
+        display: block;
+        height: 100%;
+      }
+    }
+  }
+
+  &-desc {
+    color: $color-white;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-title {
+    font-size: 4.5rem;
+    margin-bottom: 1.5rem;
+    &__gold {
+      color: $color-gold;
+    }
+  }
+
+  &-caption {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    padding-right: 1rem;
+  }
+
+  &-cta {
+    margin-top: 2.5rem;
+    border: 2px solid $color-gold;
+    background: $color-purple;
+    font-size: 2.5rem;
+    border-radius: 12px;
+    border-radius: 12px;
+    width: 35rem;
+    padding: 1.5rem 1rem;
+  }
+}
