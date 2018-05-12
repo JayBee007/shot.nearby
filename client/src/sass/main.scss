@@ -1,9 +1,11 @@
 @import "./abstracts/vars";
+@import "./abstracts/mixin";
 
 @import "./base/base";
 @import "./base/typography";
 @import "./base/animation";
 
+@import "./components/landing";
 @import "./components/loader.scss";
 @import "./components/near-by";
 @import "./components/marker-details";

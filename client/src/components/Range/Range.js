@@ -4,35 +4,17 @@ import { connect } from "react-redux";
 import { setRadius } from "../../redux/actions/actions";
 
 class Range extends React.Component {
-  state = {
-    value: 1000
-  };
-
   setValue = value => {
-    this.setState(
-      () => ({
-        value
-      }),
-      () => {
-        this.props.setRadius(this.state.value);
-      }
-    );
+    this.props.setRadius(value);
   };
 
   handleChange = e => {
     const value = e.target.value;
-    this.setState(
-      () => ({
-        value
-      }),
-      () => {
-        this.props.setRadius(this.state.value);
-      }
-    );
+    this.props.setRadius(value);
   };
 
   render() {
-    const { value } = this.state;
+    const { radius } = this.props;
     return (
       <div className="range">
         <div className="range__label">
@@ -47,7 +29,7 @@ class Range extends React.Component {
           min="500"
           max="2000"
           step="500"
-          value={value}
+          value={radius}
           onChange={this.handleChange}
         />
       </div>
@@ -55,4 +37,10 @@ class Range extends React.Component {
   }
 }
 
-export default connect(null, { setRadius })(Range);
+function mapStateToProps(state) {
+  return {
+    radius: state.nav.radius
+  };
+}
+
+export default connect(mapStateToProps, { setRadius })(Range);

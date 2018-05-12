@@ -10,10 +10,6 @@ class Gallery extends React.Component {
     images: []
   };
 
-  componentWillUnMount() {
-    console.log("un");
-  }
-
   componentWillReceiveProps(nextProps) {
     let images = [];
     if (nextProps.areImagesVisible === true) {
@@ -66,7 +62,6 @@ class Gallery extends React.Component {
   render() {
     const { areImagesVisible } = this.props;
     const { images } = this.state;
-    console.log(this.state);
 
     if (!areImagesVisible) return null;
     if (images.length < 1) return null;
