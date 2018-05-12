@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { showNav, hideNav } from "../../redux/actions/actions";
 
-const Nav = props => {
+export const Nav = props => {
   const { showNav, hideNav, nav } = props;
   const { isNavVisible } = nav;
 
