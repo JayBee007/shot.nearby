@@ -25,13 +25,14 @@ const Landing = props => {
           </h1>
           <p className="landing-caption">
             Find near by location of movies in your neighborhood, check them
-            out, take pics and show to the world
+            out, take pics
           </p>
-          <p className="landing-caption">Discover your area, find fun facts</p>
+          <p className="landing-caption">Discover your area</p>
           <p className="landing-caption">
-            Walk through the streets, make routes and invite your friends
+            Walk through the streets and get directions to shooting locations
           </p>
-          <p className="landing-caption">Burn calories and fulfil the route</p>
+
+          <p className="landing-caption">Check other nearby attractions</p>
 
           <button onClick={handleClick} className="btn landing-cta">
             Check the locations now!!
