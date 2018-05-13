@@ -4,7 +4,7 @@ const Rating = props => {
   const { rating } = props;
 
   const getStarWidth = () => {
-    const percent = rating / 2 / 5 * 100;
+    const percent = rating / 10 * 100;
 
     return percent;
   };
