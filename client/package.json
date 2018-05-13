@@ -15,26 +15,26 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.5",
     "node-sass": "^4.9.0",
     "prettier": "^1.12.1",
+    "raf": "^3.4.0",
     "react-scripts": "1.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test  --env=jsdom",
     "eject": "react-scripts eject",
     "compile:sass": "node-sass -w src/sass/main.scss src/index.css",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css,scss}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css,scss}": ["prettier --write", "git add"]
   }
 }

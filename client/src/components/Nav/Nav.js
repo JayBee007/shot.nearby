@@ -1,9 +1,10 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { showNav, hideNav } from "../../redux/actions/actions";
 
-const Nav = props => {
+export const Nav = props => {
   const { showNav, hideNav, nav } = props;
   const { isNavVisible } = nav;
 
@@ -20,6 +21,12 @@ const Nav = props => {
       </div>
     );
   }
+};
+
+Nav.propTypes = {
+  nav: PropTypes.object.isRequired,
+  showNav: PropTypes.func.isRequired,
+  hideNav: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {

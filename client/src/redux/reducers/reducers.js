@@ -4,7 +4,6 @@ import marker from "./markerReducer";
 import movie from "./movieDetailReducer";
 import nav from "./navReducer";
 import map from "./mapReducer";
-import gallery from "./galleryReducer";
 import directions from "./directionReducer";
 
 const rootReducer = combineReducers({
@@ -12,7 +11,6 @@ const rootReducer = combineReducers({
   movie,
   nav,
   map,
-  gallery,
   directions
 });
 
