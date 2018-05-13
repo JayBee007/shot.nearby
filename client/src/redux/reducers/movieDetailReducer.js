@@ -1,7 +1,8 @@
 import {
   GET_MOVIE_DETAILS_REQUEST,
   GET_MOVIE_DETAILS_SUCCESS,
-  GET_MOVIE_DETAILS_ERROR
+  GET_MOVIE_DETAILS_ERROR,
+  GET_MOVIE_DETAILS_CLEAR
 } from "../constants/constants";
 
 const initialState = {
@@ -30,6 +31,8 @@ const movieDetailReducer = (state = initialState, action) => {
         success: false,
         error: action.error
       };
+    case GET_MOVIE_DETAILS_CLEAR:
+      return { ...initialState };
     default:
       return state;
   }

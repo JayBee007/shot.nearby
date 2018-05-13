@@ -7,8 +7,8 @@ import Rating from "../Rating/Rating";
 import {
   hideMarkerDetails,
   showImages,
-  getNearByImages,
-  setDirections
+  setDirections,
+  movieClear
 } from "../../redux/actions/actions";
 
 class MarkerDetails extends React.Component {
@@ -51,8 +51,14 @@ class MarkerDetails extends React.Component {
     });
   };
 
+  handleClick = () => {
+    const { hideMarkerDetails, movieClear } = this.props;
+    hideMarkerDetails();
+    movieClear();
+  };
+
   render() {
-    const { isMarkerDetailsVisible, movie, hideMarkerDetails } = this.props;
+    const { isMarkerDetailsVisible, movie, movieError } = this.props;
     const { Poster, Title, Released, Runtime, Plot, imdbRating } = movie;
     const markerClass = isMarkerDetailsVisible
       ? "marker-details marker-details--isVisible"
@@ -61,7 +67,7 @@ class MarkerDetails extends React.Component {
     return (
       <div className={markerClass}>
         <div ref={el => (this.showDirections = el)} />
-        <span className="marker-details__close" onClick={hideMarkerDetails}>
+        <span className="marker-details__close" onClick={this.handleClick}>
           &times;
         </span>
 
@@ -75,7 +81,12 @@ class MarkerDetails extends React.Component {
             <Rating rating={imdbRating} />
             <p className="marker-details__runtime">{Runtime}</p>
           </div>
-          <p className="marker-details__title">{Title}</p>
+
+          {movieError ? (
+            <p className="marker-details__title">{movieError}</p>
+          ) : (
+            <p className="marker-details__title">{Title}</p>
+          )}
 
           <div
             ref={el => (this.outerBox = el)}
@@ -112,6 +123,7 @@ MarkerDetails.propTypes = {
 function mapStateToProps(state) {
   return {
     movie: state.movie.data,
+    movieError: state.movie.error,
     movieLocation: state.marker.location,
     centerLocation: state.map.location,
     directionsRenderer: state.map.directionsRenderer,
@@ -122,6 +134,6 @@ function mapStateToProps(state) {
 export default connect(mapStateToProps, {
   hideMarkerDetails,
   showImages,
-  getNearByImages,
-  setDirections
+  setDirections,
+  movieClear
 })(MarkerDetails);

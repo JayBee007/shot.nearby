@@ -3,7 +3,8 @@ import axios from "axios";
 import {
   GET_MOVIE_DETAILS_REQUEST,
   GET_MOVIE_DETAILS_SUCCESS,
-  GET_MOVIE_DETAILS_ERROR
+  GET_MOVIE_DETAILS_ERROR,
+  GET_MOVIE_DETAILS_CLEAR
 } from "../constants/constants";
 
 const baseUrl = "https://www.omdbapi.com/?apikey=5f66bb1f&t=";
@@ -29,6 +30,10 @@ const movieError = error => ({
   error
 });
 
+export const movieClear = () => ({
+  type: GET_MOVIE_DETAILS_CLEAR
+});
+
 export function getMovieDetails(movie) {
   return function(dispatch) {
     dispatch(movieRequest());
@@ -41,7 +46,11 @@ export function getMovieDetails(movie) {
         }
       )
       .then(data => {
-        dispatch(movieSuccess(data));
+        if (data.Response === "False") {
+          dispatch(movieError(data.Error));
+        } else {
+          dispatch(movieSuccess(data));
+        }
       });
   };
 }
