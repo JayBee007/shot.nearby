@@ -8,7 +8,7 @@ const app = express();
 
 app.use(morgan('dev'));
 
-app.use(express.static(path.join(__dirname,'..','client', 'build/')));
+app.use(express.static(path.join(__dirname,'..','client', 'build/static')));
 
 app.get('/', (req,res) => {
   const indexFile = path.join(__dirname, '..', 'client','build','index.html');
