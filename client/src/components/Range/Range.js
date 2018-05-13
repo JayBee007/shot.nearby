@@ -11,7 +11,7 @@ const Range = props => {
 
   const handleChange = e => {
     const value = e.target.value;
-    props.setRadius(value);
+    props.setRadius(+value);
   };
 
   const { radius } = props;
