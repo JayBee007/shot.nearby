@@ -117,7 +117,14 @@ class MarkerDetails extends React.Component {
 }
 
 MarkerDetails.propTypes = {
-  isMarkerDetailsVisible: PropTypes.bool.isRequired
+  isMarkerDetailsVisible: PropTypes.bool.isRequired,
+  movie: PropTypes.object.isRequired,
+  centerLocation: PropTypes.object.isRequired,
+  movieLocation: PropTypes.object.isRequired,
+  hideMarkerDetails: PropTypes.func.isRequired,
+  showImages: PropTypes.func.isRequired,
+  setDirections: PropTypes.func.isRequired,
+  movieClear: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -125,9 +132,7 @@ function mapStateToProps(state) {
     movie: state.movie.data,
     movieError: state.movie.error,
     movieLocation: state.marker.location,
-    centerLocation: state.map.location,
-    directionsRenderer: state.map.directionsRenderer,
-    directionsService: state.map.directionsService
+    centerLocation: state.map.location
   };
 }
 

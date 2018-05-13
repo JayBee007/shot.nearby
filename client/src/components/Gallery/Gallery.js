@@ -1,5 +1,6 @@
 import React from "react";
 import Lightbox from "react-images";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 import { hideImages } from "../../redux/actions/actions";
@@ -82,10 +83,16 @@ class Gallery extends React.Component {
   }
 }
 
+Gallery.propTypes = {
+  areImagesVisible: PropTypes.bool.isRequired,
+  movieLocation: PropTypes.object.isRequired,
+  google: PropTypes.object.isRequired,
+  map: PropTypes.object
+};
+
 function mapStateToProps(state) {
   return {
     areImagesVisible: state.marker.areImagesVisible,
-    gallery: state.gallery,
     movieLocation: state.marker.location
   };
 }
