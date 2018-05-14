@@ -6,7 +6,7 @@
 
 clone the repo `https://github.com/JayBee007/shot.nearby.git`
 
-cd `client`
+cd into the repo and than cd `client`
 
 install the dependencies `npm install`
 
@@ -36,13 +36,13 @@ which can be run by using `npm test`
 
 #### Ans. Since it was a location-based idea, the initial reaction was to go with React Native so that in the end both iOS and Android mobile apps would be ready, but keeping in mind the time constraints and job commitments, familiar setup of Reactjs was chosen. The initial inclination was on using Leaflet.js with React.js which got dropped after going through Google Maps API documentation since it was capable of fulfilling the initial use cases.
 
-Alongside Reactjs following were used.
+#### Alongside Reactjs following were used.
 
-* Redux `state management`
-* React Router `client side routing`
-* Redux Thunk `async store changes`
-* Google Maps React `google maps api wrapper`
-* Axios `http client`
+#### * Redux `state management`
+#### * React Router `client side routing`
+#### * Redux Thunk `async store changes`
+#### * Google Maps React `google maps api wrapper`
+#### * Axios `http client`
 
 ### _Q. Was the code linted?_
 
